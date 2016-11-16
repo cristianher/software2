@@ -1,0 +1,52 @@
+nav{
+	background-color: #0D0419;
+	margin: 0;
+	height: 50px;
+	padding: 0;
+	overflow: hidden;
+
+}
+
+ul{
+	padding: 0;
+	height: 100%;
+
+}
+
+* {
+    margin:0;
+}
+
+body{
+	padding: 0;
+}
+
+ul li{
+	display: inline-block;
+	height: 100%;
+	padding: 0;
+}
+
+li a{
+	display: block;
+	padding: 10px 20px;
+	height: 50px;
+	margin: 0;
+	font-size: 20px;
+	text-decoration: none;
+	color: white;
+}
+
+li a:hover{
+	background-color: #1A0D2B;
+}
+
+li a:active{
+	background-color: #27193A
+	;
+}
+
+.primero{
+	font-size: 25px;
+
+}

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @entrance.email %>
+</p>
+
+<p>
+  <strong>Clase:</strong>
+  <%= @entrance.clase %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @entrance.level %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @entrance.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @entrance.location %>
+</p>
+
+<%= link_to 'Edit', edit_entrance_path(@entrance) %> |
+<%= link_to 'Back', entrances_path %>

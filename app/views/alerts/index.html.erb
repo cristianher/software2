@@ -1,0 +1,76 @@
+<div class="page-header">
+  <%= link_to new_alert_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Agregar Alerta
+  <% end %>
+  <h1>Alertas</h1>
+</div>
+
+<div class="container_s">
+
+  <div class="map_container">
+    <div id="map" class="bigmap"></div>
+    <div class="notif_container">
+      <h4>Ultimas Alertas</h4>
+      <% @alerts.each do |alert| %>
+        <div class="alert <% if alert.level == 1 %> alert-success <% end %> <% if alert.level == 2 %> alert-warning <% end %> <% if alert.level == 3 %> alert-danger <% end %>">
+          <% if admin_signed_in? %>
+            <%= link_to alert, :class => "close removeAlert", method: :delete, data: { confirm: 'Deseas Descartar la Alerta? No apareerá en el mapa' } do %>
+              &times;
+            <% end %>
+          <% end %>
+          <p><strong>Lugar: </strong> <%= alert.description %></p>
+          <p><strong>Nivel: </strong> <%= alert.to_l %></p>
+          <p><strong>Hora: </strong> Hace <%= time_ago_in_words alert.created_at %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br><br>
+
+
+
+    <% if admin_signed_in? %>
+    <h4>Panel Admin</h4>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Lugar</th>
+                <th>Descripcion</th>
+                <th>Nivel</th>
+                <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @alerts.each do |alert| %>
+            <tr id="alert_<%= alert.id %>" class="alert">
+                  <td><%= alert.latitude %></td>
+                  <td><%= alert.longitude %></td>
+                  <td><%= alert.description %></td>
+                  <td><%= alert.desc %></td>
+                  <td><%= alert.level %></td>
+                  <td><%= link_to 'Mostrar', alert %></td>
+              <td><%= link_to 'Editar', edit_alert_path(alert) %></td>
+              <td><%= link_to 'Eliminar', alert, method: :delete, data: { confirm: 'Estás Seguro?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+</div>
+  <script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+
+  </script>

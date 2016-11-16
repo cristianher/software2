@@ -1,0 +1,39 @@
+<Center>
+<FONT ><h1>Información</h1>
+<hr C></hr>
+
+<p id="notice"><%= notice %></p>
+
+<head>
+<style>
+body{
+background-image: url(una.jpg);
+background-repeat: no-repeat;
+background-attachment:fixed;
+}
+</style>
+</head>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @information.each do |information| %>
+      <tr>
+        <td><%= information.body %></td>
+        <td><%= link_to 'Ver', information %></td>
+        <td><%= link_to 'Editar', edit_information_path(information) %></td>
+        <td><%= link_to 'Eliminar', information, method: :delete, data: { confirm: '¿Estás Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Información', new_information_path %>

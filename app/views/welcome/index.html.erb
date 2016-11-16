@@ -1,0 +1,36 @@
+<div class="welcome">
+	<h1 class="brand">Alertas Tempranas</h1>
+<br>
+<p class="address-bar">Esta es una página dónde encontarás todo sobre como estar preparados en caso de una emergencia, y de como prevenirlas, además de que los mismos usuarios podrán avisar a todos sobre alguna calamidad</p>
+ <br><br>
+ <div class="container_s">
+  <h2>Mapa de Fusagasugá</h2>
+  <br>
+  <div class="map_container">
+    <div id="map" class="bigmap"></div>
+    <div class="notif_container">
+      <h4>Ultimas Alertas</h4>
+      <% @alerts.each do |alert| %>
+        <div class="alert <% if alert.level == 1 %> alert-success <% end %> <% if alert.level == 2 %> alert-warning <% end %> <% if alert.level == 3 %> alert-danger <% end %>">
+          <% if admin_signed_in? %>
+            <%= link_to alert, :class => "close removeAlert", method: :delete, data: { confirm: 'Deseas Descartar la Alerta? No apareerá en el mapa' } do %>
+              &times;
+            <% end %>
+          <% end %>
+          <p><strong>Lugar: </strong> <%= alert.description %></p>
+          <p><strong>Nivel: </strong> <%= alert.to_l %></p>
+          <p><strong>Hora: </strong> Hace <%= time_ago_in_words alert.created_at %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+
+</script>

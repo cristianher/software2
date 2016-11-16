@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @information.body %>
+</p>
+
+<%= link_to 'Editar', edit_information_path(@information) %> |
+<%= link_to 'Regresar', information_index_path %>

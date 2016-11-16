@@ -1,0 +1,28 @@
+<div class="container_s">
+<div class="page-header">
+  <%= link_to alerts_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_alert_path(@alert), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Alerta</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Latitude:</dt>
+  <dd><%= @alert.latitude %></dd>
+
+  <dt>Longitude:</dt>
+  <dd><%= @alert.longitude %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @alert.description %></dd>
+
+  <dt>Level:</dt>
+  <dd><%= @alert.level %></dd>
+
+</dl>
+</div>

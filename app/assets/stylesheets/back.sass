@@ -1,0 +1,98 @@
+.padtop
+	padding-top: 40px
+.welcome
+	width: 100%
+	text-align: center
+	min-height: 50vw
+
+.container_s
+	//background: rgba(255,255,255, 0.95)
+	padding: 40px
+	margin-bottom: 50px
+	background-color: rgba(255,255,255, 0.95)
+
+
+body
+	background:
+		image: url(image_path("fondo.jpg"))
+		repeat: no-repeat
+		attachment: fixed
+		size: cover
+
+.brand
+	display: inherit
+	margin: 0
+	padding: 30px 0 10px
+	text-align: center
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
+	font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif
+	font-size: 5em
+	font-weight: 700
+	line-height: normal
+	color: #000
+
+.address-bar
+	display: inherit
+	margin: 0
+	padding: 0 0 40px
+	text-align: center
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
+	text-transform: uppercase
+	font-size: 1.25em
+	font-weight: 400
+	letter-spacing: 3px
+	color: #000
+
+
+.form_container
+	background: white
+	margin: 30px
+	text-align: center
+	padding: 10%
+
+	[type="email"], [type="password"]
+		width: 100%
+		font-size: 20px
+		padding: 5px
+		text-align: center
+		margin-bottom: 10px
+
+	[type="submit"]
+		margin: 10px
+		padding: 5px
+		color: white
+		background: blue
+		transition: all 300ms cubic-bezier(0.63,-0.33, 0.27, 3.32)
+		&:hover
+			background: black
+			transform: scale(1.1)
+
+.map, .bigmap
+	width: 70%
+	height: 350px
+	margin: 30px auto
+
+#markerStatus
+	text-align: center
+
+.map_container
+	display: flex
+
+.notif_container
+	overflow-y: scroll
+	height: 410px
+	padding: 30px
+
+.notif
+	border: 1px solid #d3d3d3
+	border-radius: 5px
+	padding: 10px
+
+.green
+	background-color: #eafeea
+
+.yellow
+	background-color: #ffffe0
+
+.red
+	background-color: #ffb2b2

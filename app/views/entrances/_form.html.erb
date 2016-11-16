@@ -1,0 +1,42 @@
+<%= form_for(entrance) do |f| %>
+  <% if entrance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entrance.errors.count, "error") %> prohibited this entrance from being saved:</h2>
+
+      <ul>
+      <% entrance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :clase %>
+    <%= f.text_field :clase %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %>
+    <%= f.text_field :level %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

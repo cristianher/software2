@@ -1,0 +1,37 @@
+<Center>
+<br>
+<FONT ><h1>Entradas</h1>
+<hr></hr>
+<font >
+<br>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Clase</th>
+      <th>Nivel</th>
+      <th>Descripción</th>
+      <th>Localidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entrances.each do |entrance| %>
+      <tr>
+        <td><%= entrance.email %></td>
+        <td><%= entrance.clase %></td>
+        <td><%= entrance.level %></td>
+        <td><%= entrance.description %></td>
+        <td><%= entrance.location %></td>
+        <td><%= link_to 'Ver', entrance %></td>
+        <td><%= link_to 'Editar', edit_entrance_path(entrance) %></td>
+        <td><%= link_to 'Eliminar', entrance, method: :delete, data: { confirm: '¿Desea eliminar?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr color = "TEAL"></hr>
+<%= link_to 'Nueva Entrada', new_entrance_path %>
