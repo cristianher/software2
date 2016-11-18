@@ -20,8 +20,10 @@
         <td><%= post.body %></td>
         <td><%= post.email %></td>
         <td><%= link_to 'Ver', post %></td>
+        <% if admin_signed_in? %>
         <td><%= link_to 'Editar', edit_post_path(post) %></td>
         <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+      <<% end -%>
       </tr>
     <% end %>
   </tbody>

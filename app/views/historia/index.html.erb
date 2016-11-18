@@ -19,8 +19,10 @@
       <tr>
         <td><%= historium.body %></td>
         <td><%= link_to 'Ver', historium %></td>
+        <% if admin_signed_in? %>
         <td><%= link_to 'Editar', edit_historium_path(historium) %></td>
         <td><%= link_to 'Eliminar', historium, method: :delete, data: { confirm: '¿Estás Seguro?' } %></td>
+      <<% end -%>
       </tr>
     <% end %>
   </tbody>
