@@ -77,9 +77,7 @@
 		element: 'area-example',
 		data: [
 			<% @alerts.each do |alert| %>
-				<% if alert[1] > 0 %>
-					{ day: '<%= alert[0].year %>-<%= alert[0].month %>-<%= alert[0].day %>', a: '<%= alert[1] %>' },
-				<% end %>
+				{ day: '<%= alert[0].year %>-<%= alert[0].month %>-<%= alert[0].day %>', a: '<%= alert[1] %>' },
 			<% end %>
 				],
 		xkey: 'day',
