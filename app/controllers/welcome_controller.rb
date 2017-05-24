@@ -7,4 +7,13 @@ class WelcomeController < ApplicationController
       marker.infowindow alert.desc
     end
   end
+
+  def statistics
+  	arr = Array.new
+  	@p = Alert.where(level: 3).count
+  	@m = Alert.where(level: 2).count
+  	@l = Alert.where(level: 1).count
+  	@months = Alert.group_by_month(:created_at)
+  	@alerts = Alert.group_by_day(:created_at).count
+  end
 end

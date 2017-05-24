@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :alerts
   root "welcome#index"
+  get '/statistics', to: "welcome#statistics"
 end

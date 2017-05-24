@@ -1,0 +1,45 @@
+<div class="welcome">
+	<h1 class="brand">Estadisticas de Las Alertas</h1>
+<br>
+
+<div class="container_s">
+	<form>
+		<select name="month">
+			
+		</select>
+	</form>
+	<div id="donut-example"></div>
+	<div id="area-example"></div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script type="text/javascript">
+	Morris.Donut({
+		element: 'donut-example',
+		data: [
+			{label: "Alertas Peligrosas", value: <%= @p %>},
+			{label: "Alertas Moderadas", value: <%= @m %>},
+			{label: "Alertas Leves", value: <%= @l %>}
+			],
+		colors: [
+			'#d9534f',
+			'#f0ad4e',
+			'#5cb85c',
+			]
+	});
+
+	Morris.Area({
+		element: 'area-example',
+		data: [
+			<% @alerts.each do |alert| %>
+				{ day: '<%= alert[0].year %>-<%= alert[0].month %>-<%= alert[0].day %>', a: '<%= alert[1] %>' },
+			<% end %>
+				],
+		xkey: 'day',
+		ykeys: ['a'],
+		labels: ['Series A']
+	});
+
+</script>

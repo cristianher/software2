@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap-generators'
 gem 'gmaps4rails'
+gem 'groupdate'
 gem 'record_tag_helper', '~> 1.0'
 group :development, :test do
   gem 'byebug', platform: :mri
