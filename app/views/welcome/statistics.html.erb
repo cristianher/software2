@@ -12,8 +12,10 @@
 				<label for="selectid" class="label-control">Elige el mes para mirar las estadísticas</label>
 				<select id="selectid" name="month" class="form-control">
 					<% @months.each do |month| %>
-						<option value="<%= month[0] %>"><%= toHuman month[0].month %> del <%= month[0].year %></option>
+						<% if month[1] > 0 %>
+							<option value="<%= month[0] %>"><%= toHuman month[0].month %> del <%= month[0].year %></option>
 						<%= month[0].month %>
+						<% end %>
 					<% end %>
 				</select>
 				<input style="margin: 5px" type="submit" value="Buscar" class="btn btn-success">
