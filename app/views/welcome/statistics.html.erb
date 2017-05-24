@@ -3,13 +3,52 @@
 <br>
 
 <div class="container_s">
-	<form>
-		<select name="month">
-			
-		</select>
+	<p>
+
+	</p>
+	<form class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="group_control">
+				<label for="selectid" class="label-control">Elige el mes para mirar las estadísticas</label>
+				<select id="selectid" name="month" class="form-control">
+					<% @months.each do |month| %>
+						<option value="<%= month[0] %>"><%= toHuman month[0].month %> del <%= month[0].year %></option>
+						<%= month[0].month %>
+					<% end %>
+				</select>
+				<input style="margin: 5px" type="submit" name="submit" value="Buscar" class="btn btn-success">
+			</div>
+		</div>
 	</form>
 	<div id="donut-example"></div>
 	<div id="area-example"></div>
+
+	<div class="table-responsive" style="margin-top: 50px">
+		<h2>Lista de Alertas</h2>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+                <th>Latitud</th>
+                <th>Longitud</th>
+                <th>Lugar</th>
+                <th>Descripcion</th>
+                <th>Nivel</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @aalerts.each do |alert| %>
+            <tr id="alert_<%= alert.id %>" class="alert">
+                  <td><%= alert.latitude %></td>
+                  <td><%= alert.longitude %></td>
+                  <td><%= alert.description %></td>
+                  <td><%= alert.desc %></td>
+                  <td><%= alert.level %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -39,7 +78,21 @@
 				],
 		xkey: 'day',
 		ykeys: ['a'],
-		labels: ['Series A']
+		labels: ['Numero de Alertas'],
+		xLabelFormat: function (x) {
+	        var IndexToMonth = [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ];
+	        var month = IndexToMonth[ x.getMonth() ];
+	        var year = x.getFullYear();
+	        var day = x.getDate();
+	        return day + " de "+ month;
+	    },
+	    dateFormat: function (x) {
+	        var IndexToMonth = [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ];
+	        var month = IndexToMonth[ new Date(x).getMonth() ];
+	        var year = new Date(x).getFullYear();
+	        var day = new Date(x).getDate();
+	        return day + " de "+ month;
+	    },
 	});
 
 </script>
