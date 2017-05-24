@@ -77,10 +77,10 @@
 		element: 'area-example',
 		data: [
 			<% @alerts.each do |alert| %>
-				{ day: '<%= alert[0].year %>-<%= alert[0].month %>-<%= alert[0].day %>', a: '<%= alert[1] %>' },
+				{ month: '<%= alert[0].year %>-<%= alert[0].month %>-<%= alert[0].day %>', a: '<%= alert[1] %>' },
 			<% end %>
 				],
-		xkey: 'day',
+		xkey: 'month',
 		ykeys: ['a'],
 		labels: ['Numero de Alertas'],
 		xLabelFormat: function (x) {
