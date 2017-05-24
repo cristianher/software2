@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
 			@p = Alert.where(level: 3).where(:created_at =>  date_range).count
 			@m = Alert.where(level: 2).where(:created_at =>  date_range).count
 			@l = Alert.where(level: 1).where(:created_at =>  date_range).count
-			@months = Alert.where(:created_at =>  date_range).group_by_month(:created_at).count
+			@months = Alert.group_by_month(:created_at).count
 			@alerts = Alert.where(:created_at =>  date_range).group_by_day(:created_at).count
 			@aalerts = Alert.all.where(:created_at =>  date_range)
 		else
